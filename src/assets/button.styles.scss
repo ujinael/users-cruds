@@ -1,0 +1,29 @@
+.button{
+display: inline-block;
+padding: .3em .25em;    
+min-width: 50px;
+border-radius: var(--common_border_radius);
+border: 1px solid;
+box-shadow: 1px 1px 1px gray;
+}
+.button:hover{
+    cursor: pointer;
+    opacity: .6;
+}
+.edit{
+background-color: var(--edit-color);
+color: white;
+border-color: var(--edit-color);
+}
+.add{
+    background-color: var(--add-color);
+    color: white;
+    border-color: var(--add-color);
+
+}
+.delete{
+    background-color: var(--delete-color);
+    color: white;
+    border-color: var(--delete-color);
+
+}

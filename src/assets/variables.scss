@@ -1,0 +1,24 @@
+:root {
+  --primary-color: #f9f9f9;
+  --card-color: #ffffff;
+  --accent-color: rgb(215, 38, 126);
+  --common_transition: all 0.3s ease;
+  --common_border_radius: 5px;
+  --main_width: 100vw;
+  --z_index-modal: 1000;
+}
+:root{
+  --edit-color:rgb(153, 216, 195);
+  --delete-color:rgb(215, 38, 126);
+--add-color:rgb(38, 158, 194);
+}
+@media (min-width: 960px) {
+  :root {
+    --main_width: 900px;
+  }
+}
+@media (min-width: 1216px) {
+  :root {
+    --main_width: 1200px;
+  }
+}
