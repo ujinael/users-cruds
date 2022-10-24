@@ -16,11 +16,14 @@
         v-numbers
         maxNum="11"
         v-model="userFormObject[key]"
+        :name="key"
       />
       <input
         v-else
         :id="key"
         :type="getInputType(key)"
+        :name="key"
+
         class="form__input"
         v-model="userFormObject[key]"
       />
@@ -56,8 +59,8 @@ const emit = defineEmits<{
     (event:"onSave",user:User):void
     (event:"onCancel"):void
 }>()
-const onSave = ()=>{
-    if(!userFormObject.value)return
+const onSave = (e:Event)=>{
+  if(!userFormObject.value)return
     const { surname, name, patronymic, birthDate, email, phone } = userFormObject.value;
  const redactedObject = new User(
     surname,name,patronymic,new Date(birthDate),email,phone

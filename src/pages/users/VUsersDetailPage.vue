@@ -31,8 +31,8 @@
     <div class="page__component">
         <div class="user__contacts">
 <h5>Контакты</h5>
-            <a class="link" :href="`tel:${user.phone}`">тел:&nbsp;+{{user.phone}}</a>
-            <a class="link" :href="`mailto:${user.email}`">email:&nbsp;{{user.email}}</a>
+            <a class="link" :href="`tel:${user.phone}`">&phone;&nbsp;+{{user.phone}}</a>
+            <a class="link" :href="`mailto:${user.email}`">&#x2709;&nbsp;{{user.email}}</a>
         </div>
     </div>
 </div>
@@ -64,6 +64,7 @@ const onImageClick = ()=>{
  const uploadImage=(e:Event)=>{
     const el = e.target as HTMLInputElement
                 const image = el.files!.item(0);
+                
                 const reader = new FileReader();
                 reader.readAsDataURL(image!);
                 reader.onload = e =>{
@@ -117,13 +118,14 @@ height: 200px;
 position: relative;
 object-fit: cover;
 overflow: hidden;
+border-radius: var(--common_border_radius);
     }
     &__image{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-width: 600px;
+min-width: 100%;
 height: auto;
     }
     &__image:hover{
@@ -145,6 +147,10 @@ height: auto;
         margin-top: 1rem;
         display: grid;
         gap: .5em;
+    }
+    &__birth_date{
+color: gray;
+font-size: small;
     }
 }
 .link{
