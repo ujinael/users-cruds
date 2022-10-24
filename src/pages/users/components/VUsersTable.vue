@@ -32,51 +32,6 @@
     :key="user.id"
     :user="user"
     />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
-    <VUsersTableRow class="users_table__row" 
-   v-for="user in users"
-    :key="user.id"
-    :user="user"
-    />
 </tbody>
     </table>  
     </div>
