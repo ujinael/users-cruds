@@ -152,12 +152,12 @@ height: auto;
 color: gray;
 font-size: small;
     }
+    &__contacts{
+        display: grid;
+        gap: .5rem;
+    }
 }
-.link{
-margin-top: 1rem;
-display: block;  
-color: slategray;  
-}
+
 @media (min-width:599px) {
     .page__component{
         width: 500px;

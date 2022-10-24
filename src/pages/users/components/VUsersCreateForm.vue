@@ -106,6 +106,8 @@ font-size: small;
   }
   &__input{
     padding: .5em .3em;
+    border-radius: var(--common_border_radius);
+    border: 1px solid gray;
   }
 }
 .actions{
