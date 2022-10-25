@@ -7,7 +7,6 @@ import { myDataSource,dataSourceInit } from "./data-source/app-data-source"
 import { User } from "./entity/user.entity"
 import * as path from "path"
 import { fileURLToPath } from "url"
-// const upload = multer.default()
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
@@ -30,9 +29,6 @@ res.sendFile(imagePath)
 const saveFile = async(file:fileupload.UploadedFile)=>{
     try {
        const type = file.mimetype.split("/")[1]
-console.log(type);
-
-
 const fileName = uuid.v4() +'.'+ type
 const filePath = path.resolve(staticPath,fileName)
 file.mv(filePath) 
@@ -45,7 +41,9 @@ return fileName
 app.post('/images/:id',async(req: Request, res: Response)=>{
     const user = await myDataSource.getRepository(User).findOneBy({id:+req.params.id ?? 1})
 if(req.files && user) {
-  const profileImage = await saveFile(req.files['image'])
+
+    const file = req.files['image']
+  const profileImage = await saveFile(Array.isArray(file)?file[0]:file)
 user.profileImage = profileImage
  await myDataSource.getRepository(User).save(user)
 
