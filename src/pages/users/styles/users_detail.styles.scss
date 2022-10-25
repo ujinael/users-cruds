@@ -1,0 +1,50 @@
+.user{
+    &__image_wrapper{
+width: 100%;
+height: 200px;
+position: relative;
+object-fit: cover;
+overflow: hidden;
+border-radius: var(--common_border_radius);
+    }
+    &__image{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+min-width: 100%;
+height: auto;
+    }
+    &__image:hover{
+        opacity: .5;
+    }
+    &__image_wrapper:hover:after{
+        content: "Изменить";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: large;
+        opacity: .5;
+        z-index: 5;
+        pointer-events: none;
+    }
+    &__personal{
+        margin-top: 1rem;
+        display: grid;
+        gap: .5em;
+    }
+    &__birth_date{
+color: gray;
+font-size: small;
+    }
+    &__contacts{
+        display: grid;
+        gap: .5rem;
+    }
+}
+
+.image_picker{
+    display: none;
+}

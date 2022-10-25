@@ -11,10 +11,7 @@
 </VModal>
     <div class="page__component">
 <div class="user__profile">
-<div class="user__image_wrapper">
-    <img type="image" class="user__image" :src="imageUrl" alt="avatar" @click="onImageClick">   
-       <input class="image_picker" ref="imagePicker" type="file"  accept="image" @change="uploadImage"> 
-</div>
+<VUserImage :user="user"/>
 <div class="user__personal"> 
 
 <span class="user__fio">
@@ -45,33 +42,12 @@ import { useUsersStore } from '@/stores/modules/users/use-users.store';
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import VUserImage from './components/VUserImage.vue';
 import VUsersCreateForm from './components/VUsersCreateForm.vue';
 const route = useRoute()
 const store = useUsersStore()
 const {user} = storeToRefs(store)
- const imageUrl = computed(()=>{
-  if(selectedImage.value){
-    return selectedImage.value
-  }
-    return new URL(`../../assets/fish.jpeg`, import.meta.url).href
- }) 
-const imagePicker = ref<HTMLInputElement>()
-const selectedImage = ref<string>("")
-const onImageClick = ()=>{
-    if(!imagePicker.value) return;
-    imagePicker.value.click()
-}
- const uploadImage=(e:Event)=>{
-    const el = e.target as HTMLInputElement
-                const image = el.files!.item(0);
-                
-                const reader = new FileReader();
-                reader.readAsDataURL(image!);
-                reader.onload = e =>{
-                    selectedImage.value = e.target?.result?.toString() ?? ""
-                   
-                };
-            }
+ 
 const userFIO = computed(()=>{
     if(!user.value)return ''
     const {surname,name,patronymic}= user.value
@@ -97,6 +73,7 @@ store.updateUser().then(()=>{
 }
 </script>
 <style scoped lang="scss">
+@import './styles/users_detail.styles.scss';
 .page{
     display: grid;
 padding: 1rem;
@@ -111,52 +88,7 @@ box-shadow: 2px 2px 6px  gray;
 border-radius: var(--common_border_radius);
 }  
 }
-.user{
-    &__image_wrapper{
-width: 100%;
-height: 200px;
-position: relative;
-object-fit: cover;
-overflow: hidden;
-border-radius: var(--common_border_radius);
-    }
-    &__image{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-min-width: 100%;
-height: auto;
-    }
-    &__image:hover{
-        opacity: .5;
-    }
-    &__image_wrapper:hover:after{
-        content: "Изменить";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: large;
-        opacity: .5;
-        z-index: 5;
-        pointer-events: none;
-    }
-    &__personal{
-        margin-top: 1rem;
-        display: grid;
-        gap: .5em;
-    }
-    &__birth_date{
-color: gray;
-font-size: small;
-    }
-    &__contacts{
-        display: grid;
-        gap: .5rem;
-    }
-}
+
 
 @media (min-width:599px) {
     .page__component{
@@ -166,7 +98,5 @@ font-size: small;
 .button{
     width: 120px;
 }
-.image_picker{
-    display: none;
-}
+
 </style>

@@ -56,6 +56,15 @@ export const useUsersStore = defineStore('users', {
   this.users = this.users.filter(e=>e.id! !==id)
   this.loading = false
   },
+  async  uploadImage(image:File|null) {
+  if(!this.user || !image) return;
+const fd = new FormData()
+fd.append("image",image,image.name)
+  const updatedUser = await Api.shared().child('images',`${this.user.id}`).upload<FormData,User>(fd,User)
+  // console.log(updatedUser);
+  
+  this.user.profileImage = updatedUser.profileImage
+  }
   }
   })
 

@@ -4,7 +4,7 @@ import {
   } from 'class-transformer';
   import router from '../router';
   export type Endpoints =
-    | 'users'
+    | 'users'|'images'
  ;
     
   
